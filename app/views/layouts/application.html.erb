@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %> 
+  <title>Блог</title>
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <section id="container">
+      <header class="clearfix">
+        <h1>Блог</h1>
+        <ul class="navigation-links">
+          <li><a href="#"><%= link_to "Все записи", posts_path%></a></li>
+          <li><a href="#"><%= link_to "Добавить запись", new_post_path%></a></li>
+        </ul>
+      </header>
 
-<%= yield %>
+      <section>
+        <p style="font-size: 22px;">
+          <%= yield %>
+        </p>
+      </section>
+
+  </section>
 
 </body>
 </html>
