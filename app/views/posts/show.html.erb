@@ -5,7 +5,7 @@
 <p class="body">
   <%= @post.body %>
 </p>
-<% if current_user %>
+<% if current_user == @post.user%>
 <%= link_to 'Редактировать', edit_post_path(@post) %>
 <%= link_to 'Удалить запись', post_path(@post), method: :delete%>
 <% end %>
@@ -16,6 +16,9 @@
       <strong><i><%= comment.user.name%>:</i></strong><br>
     <%= comment.body %>
     </p>
+    <% if current_user == comment.user %>
+    <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>
+    <% end %>
   <% end %>
 
 <h2> Добавить комментарий </h2>
