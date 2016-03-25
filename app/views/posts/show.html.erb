@@ -5,12 +5,33 @@
 <p class="body">
   <%= @post.body %>
 </p>
+<% if current_user %>
 <%= link_to 'Редактировать', edit_post_path(@post) %>
 <%= link_to 'Удалить запись', post_path(@post), method: :delete%>
+<% end %>
+<h2> Комментарии: </h2>
 
-<div id="comments">
-  <%= render @post.comments %>
+  <% @post.comments.each do |comment| %>
+    <p>
+      <strong><i><%= comment.user.name%>:</i></strong><br>
+    <%= comment.body %>
+    </p>
+  <% end %>
 
-  <h3> Add a comment: </h3>
-  <%= render "comments/form" %>
-<div>
+<h2> Добавить комментарий </h2>
+  <% if current_user %>
+  <p>
+    <%= form_for([@post, @post.comments.build]) do |f| %>
+    <p>
+        <%= f.label :body %><br />
+        <%= f.text_area :body %>
+    </p>
+
+    <p>
+        <%= f.submit %>
+    </p>
+    <% end %>
+  <% else %>
+  <h3> Что-бы оставлять комментарии, нужно зарегистрироваться </h3>
+<% end %>
+</p>
