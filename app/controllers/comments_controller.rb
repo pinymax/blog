@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
+
   def reply
+    @par = Comment.find(params[:comment_id])
     @post = Post.find(params[:post_id])
     comment = Comment.new(:parent_id => params[:comment_id])
   end
