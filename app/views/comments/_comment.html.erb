@@ -22,7 +22,8 @@
    <div align="right">
      <%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
      <% if current_user == comment.user %>
-      <%= link_to "Удалить", post_comment_path(@post, comment), method: :delete, :class => "btn btn-default navbar-btn", remote: true%>
+      <%= link_to "Удалить", post_comment_path(@post, comment), method: :delete, :class => "btn btn-default navbar-btn", remote: true %>
+      <%= link_to "Редактировать", edit_post_comment_path(@post, comment), :class => "btn btn-default navbar-btn" %>
     </div>
     <% end %>
   <% end %>

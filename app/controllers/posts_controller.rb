@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all.order('created_at DESC')
   end
@@ -37,9 +38,8 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
-
-
   private
+
     def post_params
       params.require(:post).permit(:title, :body)
     end

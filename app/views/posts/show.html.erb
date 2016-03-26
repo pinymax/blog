@@ -1,24 +1,24 @@
 <strong><%= @post.user.name %></strong>
 <br>
 <%= image_tag @post.user.avatar.to_s %>
-
 <br>
 <br>
 <br>
-
 <h1 class="title">
   <center><h2> <%= @post.title %></h2></center>
 </h1>
 
 <p class="body">
-  <h3> <%= @post.body %></h3>
+  <h3><%= @post.body %></h3>
 </p>
+
 <div align="right">
 <% if current_user == @post.user%>
-<%= link_to 'Редактировать', edit_post_path(@post), :class => "btn btn-default navbar-btn" %>
-<%= link_to 'Удалить запись', post_path(@post), method: :delete, :class => "btn btn-default navbar-btn" %>
+  <%= link_to 'Редактировать', edit_post_path(@post), :class => "btn btn-default navbar-btn" %>
+  <%= link_to 'Удалить запись', post_path(@post), method: :delete, :class => "btn btn-default navbar-btn" %>
 <% end %>
 </div>
+
 <br>
 <br>
 <br>
@@ -30,20 +30,20 @@
 <br>
 <br>
 <br>
+<div align="left">
 <h2> Добавить комментарий </h2>
   <% if current_user %>
   <p>
     <%= form_for([@post, @post.comments.build]) do |f| %>
     <p>
-
         <%= f.text_area :body, size:"100x10" %>
     </p>
-
     <p>
-        <%= f.submit %>
+        <%= f.submit "Отправить"%>
     </p>
-    <% end %>
+  <% end %>
   <% else %>
   <h3> Чтобы оставлять комментарии, нужно зарегистрироваться </h3>
-<% end %>
-</p>
+  <% end %>
+  </p>
+</div>
