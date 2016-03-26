@@ -11,7 +11,9 @@
 
 <body>
   <% if current_user %>
-    Залогинен как <strong><%= current_user.name %></strong> | <%= link_to "Выйти", '/logout' %>
+
+    <h5>  Залогинен как <strong><%= current_user.name %> </strong>| <%= link_to "Выйти", '/logout' %></h4>
+
   <% else %>
     <%= link_to 'Войти', '/login',:class => "btn btn-default navbar-btn" %>  <%= link_to 'Зарегистрироваться', '/signup', :class => "btn btn-default navbar-btn" %>
   <% end %>
