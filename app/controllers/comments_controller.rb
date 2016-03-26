@@ -1,4 +1,10 @@
 class CommentsController < ApplicationController
+
+  def reply
+    @post = Post.find(params[:post_id])
+    comment = Comment.new(:parent_id => params[:comment_id])
+  end
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
@@ -14,7 +20,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
 
-    redirect_to post_path(@post) 
+    redirect_to post_path(@post)
 
   end
 

@@ -17,6 +17,7 @@
       <strong><i><%= comment.user.name%>:</i></strong><br>
     <%= comment.body %>
     </p>
+    <%= link_to "Reply", post_comment_reply_path(@post, comment) %>
     <% if current_user == comment.user %>
     <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>
     <% end %>
