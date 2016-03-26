@@ -1,4 +1,4 @@
-<% @post.comments.each do |comment| %>
+
 <div class="table-responsive">
  <table class="table table-bordered">
  <tr class="row">
@@ -6,23 +6,24 @@
   <p align="center"><strong><i><%= comment.user.name%>:</i></strong></p>
    </td>
    <td class="col-md-9">
-    <%= comment.created_at.strftime("%H:%M , %d %b. %Y")%>
+    <div align="right"><%= comment.created_at.strftime("%H:%M , %d %b. %Y")%></div>
    </td>
  </tr>
  <tr class="row">
    <td class="field-label col-md-3 active">
-     <label>  <%= image_tag comment.user.avatar.to_s %></label>
+     <div align="center"><label>  <%= image_tag comment.user.avatar.to_s %></label></div>
    </td>
    <td class="col-md-9">
-    <p align="center"><%= comment.body %></p>
+    <p align="left"><%= comment.body %></p>
    </td>
  </tr>
 
 </table>
 </div>
-<%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
+<div align="right">
+  <%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
   <% if current_user == comment.user %>
-  <align="right"><%= link_to "Delete", post_comment_path(@post, comment), method: :delete %></align>
-
+  <%= link_to "Удалить", post_comment_path(@post, comment), method: :delete,  :class => "btn btn-default navbar-btn"%></div>
+<br>
+<br>
   <% end %>
-<% end %>
