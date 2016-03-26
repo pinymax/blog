@@ -1,14 +1,19 @@
 
-
-
-
 <h1> Регистрация </h1>
 
 <%= form_for :user, url: '/users' do |f| %>
-  Name: <%= f.text_field :name %> <br>
-  Email: <%= f.text_field :email %><br>
-  Password: <%= f.password_field :password %><br>
-  Password Confirmation: <%= f.password_field :password_confirmation %><br>
+  Name:<br>
+  <%= f.text_field :name %> <br>
+  Email:<br>
+  <%= f.text_field :email %><br>
+  Password: <br>
+  <%= f.password_field :password %><br>
+  Password Confirmation: <br>
+  <%= f.password_field :password_confirmation %><br>
   Avatar : <%= f.file_field :avatar %>
-  <%= f.submit "Продолжить" %>
+  <%= f.submit "Продолжить"%>
 <% end %>
+<div>
+      <p id="notice"><%= flash[:notice] %></p>
+      <p id="alert"><%= flash[:alert] %></p>
+    </div>

@@ -17,6 +17,14 @@ class CommentsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def edit
+  end
+
+  def update
+    @comment.update_attributes(comment_params)
+    redirect_to root_url
+  end
+
   def destroy
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])

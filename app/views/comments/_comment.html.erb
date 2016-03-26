@@ -1,28 +1,28 @@
-<% @post.comments.each do |comment| %>
-<div class="table-responsive">
- <table class="table table-bordered">
- <tr class="row">
-   <td class="field-label col-md-3 active">
-  <p align="center"><strong><i><%= comment.user.name%>:</i></strong></p>
-   </td>
-   <td class="col-md-9">
-    <%= comment.created_at.strftime("%H:%M , %d %b. %Y")%>
-   </td>
- </tr>
- <tr class="row">
-   <td class="field-label col-md-3 active">
-     <label>  <%= image_tag comment.user.avatar.to_s %></label>
-   </td>
-   <td class="col-md-9">
-    <p align="center"><%= comment.body %></p>
-   </td>
- </tr>
-
-</table>
-</div>
-<%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
-  <% if current_user == comment.user %>
-  <align="right"><%= link_to "Delete", post_comment_path(@post, comment), method: :delete %></align>
-
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <tr class="row">
+        <td class="field-label col-md-3 active">
+          <p align="center"><strong><i><%= comment.user.name%></i></strong></p>
+        </td>
+        <td class="col-md-9">
+          <%= comment.created_at.strftime("%H:%M , %d %b. %Y")%>
+        </td>
+      </tr>
+      <tr class="row">
+        <td class="field-label col-md-3 active">
+          <center> <label>  <%= image_tag comment.user.avatar.to_s %></label></center>
+        </td>
+        <td class="col-md-9">
+          <p align="left"><%= comment.body %></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <% if current_user %>
+   <%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
+    <% if current_user == comment.user %>
+      <%= link_to "Удалить", post_comment_path(@post, comment), method: :delete, :class => "btn btn-default navbar-btn"%>
+    <% end %>
   <% end %>
-<% end %>
+  <br>
+  <br>
