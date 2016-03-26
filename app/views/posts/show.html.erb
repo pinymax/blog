@@ -1,29 +1,26 @@
 <h1 class="title">
-  <%= @post.title %>
+  <h2> <%= @post.title %></h2>
 </h1>
 
 <p class="body">
   <%= @post.body %>
 </p>
-<% if current_user %>
-<%= link_to 'Редактировать', edit_post_path(@post) %>
-<%= link_to 'Удалить запись', post_path(@post), method: :delete%>
+<% if current_user == @post.user%>
+<%= link_to 'Редактировать', edit_post_path(@post), :class => "btn btn-default navbar-btn" %>
+<%= link_to 'Удалить запись', post_path(@post), method: :delete, :class => "btn btn-default navbar-btn" %>
 <% end %>
 <h2> Комментарии: </h2>
 
-  <% @post.comments.each do |comment| %>
-    <p>
-      <strong><i><%= comment.user.name%>:</i></strong><br>
-    <%= comment.body %>
-    </p>
-  <% end %>
-
+  <%= nested_comments @post.comments.arrange(:order => :created_at)%>
+<br>
+<br>
+<br>
 <h2> Добавить комментарий </h2>
   <% if current_user %>
   <p>
     <%= form_for([@post, @post.comments.build]) do |f| %>
     <p>
-        <%= f.label :body %><br />
+
         <%= f.text_area :body %>
     </p>
 

@@ -1,0 +1,16 @@
+<% @post.comments.each do |comment| %>
+  <p>
+    <div class="container">
+      <div class="row">
+        <strong><i><%= comment.user.name%>:</i></strong><br>
+        <p align="center"><%= comment.body %></p>
+      
+      <%= image_tag comment.user.avatar.to_s %>
+      </div>
+    </div>
+</p>
+  <%= link_to "Reply", post_comment_reply_path(@post, comment) %>
+  <% if current_user == comment.user %>
+  <align="right"><%= link_to "Delete", post_comment_path(@post, comment), method: :delete %></align>
+  <% end %>
+<% end %>
