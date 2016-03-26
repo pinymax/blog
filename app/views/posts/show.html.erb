@@ -1,14 +1,27 @@
+<strong><%= @post.user.name %></strong>
+<br>
+<%= image_tag @post.user.avatar.to_s %>
+
+<br>
+<br>
+<br>
+
 <h1 class="title">
-  <h2> <%= @post.title %></h2>
+  <center><h2> <%= @post.title %></h2></center>
 </h1>
 
 <p class="body">
-  <%= @post.body %>
+  <h3> <%= @post.body %></h3>
 </p>
+<div align="right">
 <% if current_user == @post.user%>
 <%= link_to 'Редактировать', edit_post_path(@post), :class => "btn btn-default navbar-btn" %>
 <%= link_to 'Удалить запись', post_path(@post), method: :delete, :class => "btn btn-default navbar-btn" %>
 <% end %>
+</div>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>

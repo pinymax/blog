@@ -1,4 +1,3 @@
-
   <div class="table-responsive">
     <table class="table table-bordered">
       <tr class="row">
@@ -6,7 +5,7 @@
           <p align="center"><strong><i><%= comment.user.name%></i></strong></p>
         </td>
         <td class="col-md-9">
-          <%= comment.created_at.strftime("%H:%M , %d %b. %Y")%>
+          <%= comment.created_at.strftime("%H:%M,  %d %b. %Y")%>
         </td>
       </tr>
       <tr class="row">
@@ -20,10 +19,13 @@
     </table>
   </div>
   <% if current_user %>
-   <%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
-    <% if current_user == comment.user %>
+   <div align="right">
+     <%= link_to "Ответить", post_comment_reply_path(@post, comment), :class => "btn btn-default navbar-btn"%>
+     <% if current_user == comment.user %>
       <%= link_to "Удалить", post_comment_path(@post, comment), method: :delete, :class => "btn btn-default navbar-btn"%>
+    </div>
     <% end %>
   <% end %>
+  <hr>
   <br>
   <br>
