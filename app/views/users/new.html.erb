@@ -3,13 +3,13 @@
 
 <%= form_for :user, url: '/users' do |f| %>
   Name:<br>
-  <%= f.text_field :name %> <br>
+  <%= f.text_field :name , :placeholder => "От 3 символов"%> <br>
   Email:<br>
-  <%= f.text_field :email %><br>
+  <%= f.text_field :email, :placeholder => "example@gmail.com" %><br>
   Password: <br>
-  <%= f.password_field :password %><br>
+  <%= f.password_field :password, :placeholder => "От 6 символов"%><br>
   Password Confirmation: <br>
-  <%= f.password_field :password_confirmation %><br>
+  <%= f.password_field :password_confirmation,:placeholder => "Повторный ввод пароля" %><br>
   Avatar : <%= f.file_field :avatar %>
   <%= f.submit "Продолжить"%>
 <% end %>
