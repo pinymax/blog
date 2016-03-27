@@ -18,6 +18,10 @@
    word-wrap: break-word;
    width: 750px;
  }
+ .comment_reply {
+   word-wrap: break-word;
+   width: 760px;
+ }
  .col-md-9 {
    vertical-align: bottom;
  }

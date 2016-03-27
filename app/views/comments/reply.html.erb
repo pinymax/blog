@@ -1,4 +1,4 @@
-<blockquote><h3><%= @comment.parent.body %></h3></blockquote>
+<div class="comment_reply"><blockquote><h3><%= @comment.parent.body %></h3></blockquote></div>
 
 <%= form_for([@post, @comment]) do |f| %>
 <p>
