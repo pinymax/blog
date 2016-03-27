@@ -1,31 +1,21 @@
 
 <h1> Регистрация </h1>
-<%= form_for @user, url: users_path do |f| %>
+<%= simple_form_for @user, url: users_path do |f| %>
   <br>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-       Были найдены такие ошибки:
-      </h2>
-      <ul>
-        <% @user.errors.messages.values.each do |msg| %>
-          <% msg.each do |m| %>
-          <li><b><i><%= m %></b></i></li>
-        <% end %>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
   <hr>
   <hr>
-  Name:<br>
-  <%= f.text_field :name , :placeholder => "От 3 символов"%> <br>
-  Email:<br>
-  <%= f.text_field :email, :placeholder => "example@gmail.com" %><br>
-  Password: <br>
-  <%= f.password_field :password, :placeholder => "От 6 символов"%><br>
-  Password Confirmation: <br>
-  <%= f.password_field :password_confirmation,:placeholder => "Повторный ввод пароля" %><br>
+
+  <%= f.input :name , :placeholder => "От 3 символов",:input_html => {:style=> 'width: 200px'}%> <br>
+
+  <%= f.input :email, :placeholder => "user@domain.com",:input_html => {:style=> 'width: 200px'} %><br>
+
+  <%= f.input :password, :placeholder => "От 6 символов",:input_html => {:style=> 'width: 200px'} %><br>
+
+  <%= f.input :password_confirmation,:placeholder => "Повторный ввод пароля" ,:input_html => {:style=> 'width: 200px'}%><br>
   Avatar : <%= f.file_field :avatar %>
-  <%= f.submit "Продолжить"%>
+  <br>
+  <br>
+
+  <%= f.button :submit %>
 <% end %>
