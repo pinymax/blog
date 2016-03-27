@@ -13,8 +13,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     @post.save
-
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else
+      render 'new'
+    end 
   end
 
   def show
@@ -35,7 +38,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-   redirect_to root_path 
+   redirect_to root_path
   end
 
   private
