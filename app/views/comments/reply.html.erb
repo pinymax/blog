@@ -1,7 +1,7 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
+<%= form_for([@post, @comment]) do |f| %>
 <p>
     <h1> Ответить на комментарий: </h1>
-    <%= f.hidden_field :parent_id %>
+    <%= f.hidden_field :ancestry %>
     <%= f.text_area :body, size:"100x10"%>
 </p>
 
