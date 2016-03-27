@@ -14,7 +14,10 @@
  *= require_self
  */
 
-
+ .comment {
+   word-wrap: break-word;
+   width: 750px;
+ }
  .col-md-9 {
    vertical-align: bottom;
  }
