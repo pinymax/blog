@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       render 'new'
-    end 
+    end
   end
 
   def show
@@ -43,11 +43,11 @@ class PostsController < ApplicationController
 
   private
 
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 
-    def find_post
-      @post = Post.find(params[:id])
-    end
+  def find_post
+    @post = Post.find(params[:id])
+  end
 end
